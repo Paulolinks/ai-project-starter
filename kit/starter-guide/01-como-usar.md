@@ -37,7 +37,7 @@ ai-project-starter/
 ```
 
 ## Onde guardar o kit
-Guarde a pasta `ai-project-starter` num lugar fixo, por exemplo `C:\Users\paulo\Projects\_templates\ai-project-starter`.
+Guarde a pasta `ai-project-starter` num lugar fixo, por exemplo `C:\Users\<voce>\Projects\_templates\ai-project-starter`.
 **Nunca edite o kit original com dados de um projeto** — sempre copie.
 
 ## Projeto NOVO — passo a passo
@@ -46,7 +46,7 @@ Guarde a pasta `ai-project-starter` num lugar fixo, por exemplo `C:\Users\paulo\
 2. Copie **o conteúdo** de `ai-project-starter` (inclusive a pasta oculta `.claude`) para a raiz do projeto.
    No PowerShell:
    ```powershell
-   Copy-Item -Recurse -Force "C:\Users\paulo\Projects\_templates\ai-project-starter\*" "C:\Users\paulo\Projects\meu-projeto\"
+   Copy-Item -Recurse -Force "C:\Users\<voce>\Projects\_templates\ai-project-starter\*" "C:\Users\<voce>\Projects\meu-projeto\"
    ```
 3. Acrescente ao `.gitignore` o conteúdo de `starter-guide/gitignore-additions.txt`.
 4. Abra no VS Code, abra o Claude Code e rode:

@@ -1,0 +1,7 @@
+{
+  "verify": [
+    { "name": "kit-tests", "run": "node --test \"tests/*.test.mjs\"" },
+    { "name": "kit-context-lint", "run": "node kit/scripts/lint-context.mjs --root kit" }
+  ],
+  "contextLineBudget": 400
+}

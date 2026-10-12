@@ -10,7 +10,8 @@ ai-project-starter/
 ├── CLAUDE.md                  ← entrada do Claude Code (importa AGENTS.md + 2 arquivos essenciais)
 ├── AGENTS.md                  ← constituição: regras para QUALQUER agente (Codex lê direto)
 ├── .claude/
-│   ├── settings.json          ← travas reais: bloqueia ler .env, rm -rf, push --force; pede confirmação p/ commit/install
+│   ├── settings.json          ← permissões + registro dos hooks (veja "Travas e seus limites")
+│   ├── hooks/                 ← travas executadas: guard, stop-verify, post-edit, session-start
 │   └── skills/                ← workflows prontos (viram comandos /)
 │       ├── kickoff/           /kickoff        projeto novo: entrevista e preenche o contexto
 │       ├── adopt/             /adopt          projeto existente: audita o código e documenta a realidade
@@ -109,6 +110,23 @@ copie as pastas das skills para `.agents/skills/`.)
 - Carregados **sempre**: `AGENTS.md`, `project-overview.md`, `progress-tracker.md` → mantenha-os curtos.
 - Carregados **sob demanda**: todo o resto (o Mapa de contexto no `AGENTS.md` diz à IA quando ler cada um).
 - Recomendação oficial da Anthropic: cada `CLAUDE.md` com menos de ~200 linhas.
+
+## Travas e seus limites
+
+O kit protege o projeto em três camadas. Nenhuma sozinha é perfeita; juntas, reduzem muito o risco.
+
+| Camada | O que faz | O que NÃO cobre |
+|---|---|---|
+| **Permissões** (`.claude/settings.json`) | Impede as ferramentas Read/Edit do Claude de abrir `.env`, chaves e `secrets/`; pede confirmação para commit, push e instalação | Comandos de terminal: `Read(./.env)` não impede `cat .env`. Regras `Bash(...)` comparam só o começo do comando |
+| **Hooks** (`.claude/hooks/`, Node) | `guard`: nega comandos que citam segredos ou destroem dados (`rm -rf`, `push --force`, `reset --hard`, `DROP TABLE`, `Remove-Item -Recurse -Force`) e pede confirmação nas `protectedPaths`. `stop-verify`: não deixa a IA encerrar com o `verify` vermelho (até 2 tentativas, depois avisa você). `post-edit`: roda os comandos de `onEdit` a cada edição. `session-start`: mostra git, último verify e o estado do tracker | Comandos disfarçados (ex.: montar o nome do arquivo em partes). Só funciona no Claude Code; no Codex e no Cursor a garantia é a Definition of Done + CI |
+| **Sandbox** do Claude Code | Isola o terminal no nível do sistema operacional (arquivos e rede) | Não existe no Windows nativo; use no WSL, macOS ou Linux |
+
+Configuração em `kit.config.json`:
+- `verify`: comandos do projeto (testes, lint, tipos, build) rodados por `node scripts/verify.mjs` e pelo hook de fim de turno.
+- `onEdit`: comandos rápidos por arquivo editado, com `{file}` (ex.: `{ "name": "prettier", "run": "npx prettier --write {file}", "extensions": [".ts", ".tsx"] }`).
+- `protectedPaths`: globs que exigem sua confirmação para editar (ex.: `"db/migrations/**"`).
+
+Requisito: **Node.js 20+** instalado (os scripts e hooks não usam pacotes npm).
 
 ## Manutenção
 - Ao fim de cada marco, peça: "revise `context/` e aponte informações desatualizadas ou contraditórias".

@@ -34,8 +34,8 @@ Diferenças deste kit:
 4. **Estratégia de tokens.** Só 3 arquivos curtos carregam sempre; o resto é lido sob demanda via "Mapa de contexto".
 5. **Cerimônia proporcional (L0–L3).** Typo não precisa de spec; troca de banco precisa de spec + ADR.
    Sem isso, o processo vira burocracia e você abandona em uma semana.
-6. **Travas de verdade, não só pedidos.** Texto no `CLAUDE.md` é orientação; o `.claude/settings.json` **bloqueia**
-   leitura de `.env`, `rm -rf`, `push --force` e pede confirmação para commit e instalação de pacotes.
+6. **Travas de verdade, não só pedidos.** Texto no `CLAUDE.md` é orientação; permissões e hooks **reduzem** o risco de verdade (limites em "Travas e seus limites", no guia 01):
+   negam segredos e comandos destrutivos, pedem confirmação para commit e instalação, e não deixam a IA encerrar com o `verify` vermelho.
 7. **Informação atualizada:** Spec Kit mudou para `--integration claude` e `/speckit-*`; claude-mem agora é plugin
    oficial do marketplace; Context7 tem setup em um comando.
 8. **Modo projeto existente (`/adopt`)** que documenta a realidade do código, com evidência por arquivo, antes de planejar.

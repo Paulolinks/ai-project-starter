@@ -69,6 +69,9 @@ flowchart LR
 
 ## 10. Comandos
 > A IA usa esta seção para rodar e verificar o projeto. Mantenha exata.
+> **Verificação:** `node scripts/verify.mjs` roda o lint do contexto e os comandos listados em `"verify"` no
+> `kit.config.json` (fonte única, lida pela máquina). Ao preencher a tabela abaixo, copie os comandos de teste,
+> lint, type check e build para lá.
 | Ação | Comando |
 |---|---|
 | Instalar | `{{...}}` |
@@ -86,4 +89,5 @@ flowchart LR
 
 ## 12. Zonas protegidas
 > Arquivos/pastas que a IA NÃO deve alterar sem pedido explícito.
+> Copie os globs para `"protectedPaths"` no `kit.config.json`: o hook `guard` pede confirmação antes de editá-los.
 - {{ex.: migrations já aplicadas, /vendor, arquivos gerados}}

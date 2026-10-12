@@ -3,6 +3,9 @@
 CLAUDE.local.md
 .claude/settings.local.json
 
+# Resultado local do verify (scripts/verify.mjs)
+.kit/
+
 # Segredos (nunca commitar)
 .env
 .env.local

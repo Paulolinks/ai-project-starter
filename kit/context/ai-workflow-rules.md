@@ -35,8 +35,8 @@ Na dúvida entre dois níveis, use o mais alto e pergunte.
 
 ## 4. Definition of Done (tarefa/feature está pronta quando…)
 - [ ] Todos os critérios de aceite atendidos e demonstrados
-- [ ] Testes novos escritos e **toda** a suíte passando
-- [ ] Lint, formatter e type check limpos
+- [ ] Testes novos escritos
+- [ ] `node scripts/verify.mjs` **verde** (lint do contexto + testes, lint, formatter, type check) — cite a linha final da saída no resumo
 - [ ] Sem segredos, logs de debug ou código comentado
 - [ ] Documentação/contexto atualizados (spec, progress tracker, ADR se aplicável)
 - [ ] Resumo entregue: o que mudou, como verificar, o que NÃO foi testado

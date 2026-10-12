@@ -5,15 +5,13 @@
 
 ## Estado atual
 - **Fase:** M1 — verificação por máquina
-- **Foco agora:** teste ponta a ponta dos hooks (T8 da spec 03)
-- **Spec ativa:** 03
+- **Foco agora:** spec 04 (ACs com evidência, bugfix, mudança de escopo)
+- **Spec ativa:** nenhuma (02 e 03 concluídas)
 - **Última atualização:** 2026-10-12
 
 ## Próximos passos (em ordem)
-1. Paulo testa os hooks em `teste-hooks-v2` no Claude Code (T8).
-2. Commit das specs 02 e 03 (quando o Paulo pedir).
-3. Paulo cria o repositório público no GitHub (MIT).
-4. `/spec 04` — ACs com status e evidência, bugfix, mudança de escopo.
+1. Paulo cria o repositório público no GitHub (MIT) para o primeiro push.
+2. `/spec 04` — ACs com status e evidência, bugfix, mudança de escopo.
 
 ## Roadmap
 | Marco | Specs incluídas | Status |
@@ -29,7 +27,7 @@
 |---|---|---|---|
 | 01 | Design system | Dropped | kit não tem UI |
 | 02 | Verify + lint do contexto | Done | 25 testes; verify verde |
-| 03 | Hooks do Claude Code + travas honestas | In Progress | falta T8: teste no Claude Code real |
+| 03 | Hooks do Claude Code + travas honestas | Done | testado no Claude Code real |
 | 04 | ACs com status/evidência, bugfix, mudança de escopo | A escrever | prioridade 1–2 |
 | 05 | Lições aprendidas + `/retro` | A escrever | |
 | 06 | Subagentes reviewer e verifier | A escrever | |
@@ -50,9 +48,10 @@ Status possíveis: `Draft` → `Clarifying` → `Approved` → `In Progress` →
 | 1 | Guia afirma que settings bloqueia `.env`; Bash ainda lê | Falsa segurança | `kit/starter-guide/03-*.md` | Spec 03 |
 | 2 | Caminho `_templates` fixo no guia não bate com a pasta real | Confusão no setup | `kit/starter-guide/01-*.md` | Spec 08 |
 | 3 | Seção sobre o ChatGPT vai para todo projeto copiado | Ruído | `kit/starter-guide/03-*.md` | Spec 08 (CHANGELOG) |
+| 4 | Git avisa conversão LF→CRLF em todos os arquivos | Diffs ruidosos entre Windows e CI | raiz e `kit/` | Adicionar `.gitattributes` (`* text=auto eol=lf`) na spec 10 |
 
 ## Log de sessões (mais recente primeiro, máx. 5)
 ### 2026-10-12
 - **Feito:** spec 03 implementada (hooks guard, stop-verify, post-edit, session-start; 42 testes); spec 02 implementada (`kit/scripts/verify.mjs`, `lint-context.mjs`, 25 testes, verify verde); análise do kit v1 e pesquisa (relatório + `context/research/benchmark-2026-10.md`); criado `ai-project-starter-v2` com o kit em `kit/`; kickoff preencheu overview, arquitetura, padrões, UI (N/A), ADR-0002 proposto.
 - **Decidido:** GitHub público + MIT; agentes Claude Code, Codex e Cursor; bilíngue (en + pt-BR); ADR-0002 aprovado; v1 fica intocado como backup; MVP = M1 (verificação por máquina); scripts em Node sem dependências (proposto).
-- **Pendente:** criar repo no GitHub; nada foi commitado.
+- **Pendente:** criar repo no GitHub e fazer o primeiro push (4 commits locais).

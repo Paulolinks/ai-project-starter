@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| Status | In Progress  <!-- Draft → Clarifying → Approved → In Progress → Done / Dropped --> |
+| Status | Done  <!-- Draft → Clarifying → Approved → In Progress → Done / Dropped --> |
 | Nível | L2 |
 | Autor | IA + Paulo |
 | Criada em | 2026-10-12 |
@@ -120,7 +120,7 @@ Registro em exec form (esclarecimento 4): sem shell, `${CLAUDE_PROJECT_DIR}` sub
 - [x] T5 — `session-start.mjs` (AC-3.1) [P com T2]
 - [x] T6 — `settings.json` + `kit.config.json` + validação no `config.mjs`
 - [x] T7 — Guia: travas e limites, sandbox (AC-4.5)
-- [ ] T8 — Teste ponta a ponta no Claude Code real; registrar evidência
+- [x] T8 — Teste ponta a ponta no Claude Code real; registrar evidência
 
 ## 9. Aprovação
 - [x] **Aprovado pelo humano** — Paulo, 2026-10-12
@@ -133,4 +133,9 @@ Registro em exec form (esclarecimento 4): sem shell, `${CLAUDE_PROJECT_DIR}` sub
 - Desvio menor: na AC-1.2, o aviso final usa `systemMessage` (aparece para o usuário) em vez de pedir à IA, porque depois que o turno acaba a IA não fala mais. O motivo do bloqueio já manda a IA relatar o que não conseguiu corrigir.
 - Hooks nunca derrubam a sessão: erro inesperado vira aviso e o hook sai com 0.
 - Evidência: 17 testes de hooks + 25 da spec 02 = 42/42; `node kit/scripts/verify.mjs` → `✔ verify: green (3 step(s))`.
-- T8 pendente: projeto de teste pronto em `Desktopi-project-starter	este-hooks-v2` (verify vermelho de propósito, `.env` falso, `LICENSE` protegido). Precisa ser aberto no Claude Code pelo Paulo.
+- **T8 — ponta a ponta no Claude Code real (2.1.295, headless `claude -p`, Windows/Git Bash)**, projeto `Desktopi-project-starter	este-hooks-v2` (verify vermelho de propósito, `.env` falso, `LICENSE` em `protectedPaths`):
+  1. SessionStart: a IA repetiu "Git: repository has no commits yet" e "Last verify: RED (tests)" do contexto injetado. ✔
+  2. `cat .env` com Bash liberado: negado com "Blocked by the project kit: this command touches .env files…". ✔
+  3. Criar `notas.txt`: o Stop bloqueou ("attempt 1 of 2"); a IA rodou o verify, achou a causa e **recusou burlar o teste**, explicando ao usuário o que ainda falha. ✔
+  4. `Write` no `LICENSE`: o hook pediu confirmação ("protected path…"); sem confirmação, o arquivo ficou intacto. ✔
+- Custo do teste: ~US$ 0,35 (a maior parte numa primeira rodada com o modelo padrão; as demais com Haiku).

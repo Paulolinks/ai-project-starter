@@ -10,8 +10,7 @@
 - **Última atualização:** 2026-10-12
 
 ## Próximos passos (em ordem)
-1. Paulo cria o repositório público no GitHub (MIT) para o primeiro push.
-2. `/spec 04` — ACs com status e evidência, bugfix, mudança de escopo.
+1. `/spec 04` — ACs com status e evidência, bugfix, mudança de escopo.
 
 ## Roadmap
 | Marco | Specs incluídas | Status |
@@ -54,4 +53,4 @@ Status possíveis: `Draft` → `Clarifying` → `Approved` → `In Progress` →
 ### 2026-10-12
 - **Feito:** spec 03 implementada (hooks guard, stop-verify, post-edit, session-start; 42 testes); spec 02 implementada (`kit/scripts/verify.mjs`, `lint-context.mjs`, 25 testes, verify verde); análise do kit v1 e pesquisa (relatório + `context/research/benchmark-2026-10.md`); criado `ai-project-starter-v2` com o kit em `kit/`; kickoff preencheu overview, arquitetura, padrões, UI (N/A), ADR-0002 proposto.
 - **Decidido:** GitHub público + MIT; agentes Claude Code, Codex e Cursor; bilíngue (en + pt-BR); ADR-0002 aprovado; v1 fica intocado como backup; MVP = M1 (verificação por máquina); scripts em Node sem dependências (proposto).
-- **Pendente:** criar repo no GitHub e fazer o primeiro push (4 commits locais).
+- **Pendente:** nada bloqueando. Repositório público: https://github.com/Paulolinks/ai-project-starter (branch `main`).

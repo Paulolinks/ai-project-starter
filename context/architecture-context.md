@@ -99,7 +99,7 @@ O kit original continua intocado em `../ai-project-starter/` como backup da v1.
 | Ambiente | URL/local | Como faz deploy |
 |---|---|---|
 | Dev | `Desktop\ai-project-starter\ai-project-starter-v2` | — |
-| "Prod" | repositório público no GitHub (MIT), nome a definir | tag de versão + `copier update` nos projetos-alvo |
+| "Prod" | https://github.com/Paulolinks/ai-project-starter (público, MIT, branch `main`) | push na `main`; tag de versão + `copier update` nos projetos-alvo (spec 08) |
 
 ## 12. Zonas protegidas
 - `../ai-project-starter/` (kit v1 original): só leitura.
